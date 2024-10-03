@@ -1,0 +1,131 @@
+.task-detail-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 90%;
+    margin: 3rem auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; /* Para la barra lateral de color */
+    border-left: 10px solid transparent; /* Barra lateral que cambia de color según prioridad */
+  }
+  
+  .task-detail-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilos para diferentes prioridades */
+  .high-priority {
+    border-left-color: #e74c3c; /* Rojo */
+  }
+  
+  .medium-priority {
+    border-left-color: #f39c12; /* Naranja */
+  }
+  
+  .low-priority {
+    border-left-color: #2ecc71; /* Verde */
+  }
+  
+  /* Estilos del título */
+  .task-detail-card h2 {
+    font-size: 2.4rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* Estilos de la información */
+  .task-info {
+    text-align: left;
+    max-width: 100%;
+  }
+  
+  .task-info p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+  
+  .task-info strong {
+    color: #2c3e50;
+  }
+  
+  /* Estilos del botón */
+  .task-detail-card .btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .task-detail-card .btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  /* Mejora de la tipografía y flexibilidad */
+  .task-info-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .task-info-container p {
+    flex-basis: 45%; /* Ocupa un 45% del ancho disponible */
+  }
+  
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .task-detail-card {
+      padding: 2rem;
+      width: 100%;  /* En pantallas pequeñas, ocupa el 100% del ancho */
+    }
+  
+    .task-info-container {
+      flex-direction: column;
+    }
+  
+    .task-info-container p {
+      flex-basis: 100%;
+    }
+  }
+
+  .progress-container {
+    background-color: #e9ecef;
+    border-radius: 4px;
+    height: 25px;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Barra de progreso */
+  .progress-bar {
+    background-color: #28a745; /* Verde por defecto */
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  /* Estilo cuando el tiempo utilizado ha excedido */
+  .progress-bar.overdue {
+    background-color: #e74c3c; /* Rojo si ha sobrepasado el tiempo */
+  }
+  
+  /* Mensaje de exceso de tiempo */
+  .overdue-message {
+    color: #e74c3c;
+    font-weight: bold;
+  }

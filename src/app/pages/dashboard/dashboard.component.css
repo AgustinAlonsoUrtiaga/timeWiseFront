@@ -1,0 +1,111 @@
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  /* Sección de tareas */
+  .tasks-section {
+    flex: 2;  /* Toma dos veces el espacio que las estadísticas */
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sección de estadísticas */
+  .statistics-section {
+    flex: 1;  /* Toma menos espacio que la sección de tareas */
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Grid de las tareas */
+  .tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Ajuste automático */
+    gap: 1.5rem;
+  }
+  
+  /* Botón de nueva tarea */
+  .new-task-button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .new-task-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Tarjetas de estadísticas */
+  .stat-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  
+  /* Progreso de las estadísticas */
+  .progress-bar {
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 20px;
+  }
+  
+  .progress {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    height: 100%;
+    transition: width 0.4s ease;
+  }
+  
+  /* Mensaje cuando no hay tareas */
+  .no-tasks-message {
+    text-align: center;
+    color: #888;
+    font-size: 1.2rem;
+  }
+  
+  /* Media Queries para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;  /* Cambia de fila a columna en pantallas pequeñas */
+      padding: 1rem;
+    }
+  
+    .tasks-section, .statistics-section {
+      flex: 1;  /* Toma el 100% del ancho disponible */
+      margin-bottom: 1rem;  /* Añadir espacio entre las secciones */
+    }
+  
+    .new-task-button {
+      width: 100%;  /* Botón de nueva tarea ocupará todo el ancho */
+      text-align: center;
+    }
+  
+    .tasks-grid {
+      grid-template-columns: 1fr;  /* Una sola columna en pantallas pequeñas */
+    }
+  }
+  
+  /* Media Queries para pantallas muy pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .tasks-grid {
+      grid-template-columns: 1fr;  /* Las tareas se muestran en una sola columna */
+    }
+  
+    .stat-card {
+      padding: 1rem;
+    }
+  }

@@ -1,0 +1,20 @@
+<div [ngClass]="{
+    'task-card': true, 
+    'high-priority': task.priority === 'High', 
+    'medium-priority': task.priority === 'Medium', 
+    'low-priority': task.priority === 'Low'
+    }" 
+    [routerLink]="['/task-detail', task.id]" 
+    class="task-container">
+  
+  <div class="task-header">
+    <h3 class="task-title">{{ task.title }}</h3>
+  </div>
+
+  <div class="task-body">
+    <p class="task-status">{{ task.status }}</p>
+    <p class="task-due-date">
+      Due: {{ task.dueDate | date: 'MMM d, y' }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+.task-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;  /* Para el indicador de prioridad */
+    border-left: 5px solid; /* Indicador de prioridad a la izquierda */
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.high-priority {
+    border-left-color: #e74c3c; /* Rojo para alta prioridad */
+}
+
+.medium-priority {
+    border-left-color: #f39c12; /* Naranja para media prioridad */
+}
+
+.low-priority {
+    border-left-color: #2ecc71; /* Verde para baja prioridad */
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 1.25rem;
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0;
+}
+
+.task-body {
+    margin: 15px 0;
+}
+
+.task-status {
+    color: #2980b9;
+    font-weight: 500;
+    margin: 0;
+}
+
+.task-due-date {
+    font-size: 0.875rem;
+    color: #7f8c8d;
+    margin: 0;
+}

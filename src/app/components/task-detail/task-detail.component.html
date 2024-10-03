@@ -1,0 +1,31 @@
+<div class="task-detail-card" [ngClass]="{
+    'high-priority': task.priority === 'High',
+    'medium-priority': task.priority === 'Medium',
+    'low-priority': task.priority === 'Low'
+}">
+  <h2>{{ task.title }}</h2>
+  <div class="task-info">
+    <p><strong>Description:</strong> {{ task.description }}</p>
+    <p><strong>Status:</strong> {{ task.status }}</p>
+    <p><strong>Urgent:</strong> {{ task.urgent ? 'Yes' : 'No' }}</p>
+
+    <!-- Barra de progreso del tiempo -->
+    <p><strong>Time Used:</strong> {{ task.timeUsed }} minutes</p>
+    <p><strong>Estimated Time:</strong> {{ task.estimatedTime }} {{ task.timeUnit }}</p>
+    
+    <div class="progress-container">
+      <div class="progress-bar" [ngStyle]="{ width: calculateProgress() + '%' }"
+           [ngClass]="{ 'overdue': task.timeUsed > task.estimatedTime }">
+      </div>
+    </div>
+    <p *ngIf="task.timeUsed > task.estimatedTime" class="overdue-message">
+      Exceeded by {{ task.timeUsed - task.estimatedTime }} minutes
+    </p>
+
+    <p><strong>Scrum Section:</strong> {{ task.scrumSection }}</p>
+    <p><strong>Priority:</strong> {{ task.priority }}</p>
+    <p><strong>Created Date:</strong> {{ task.createdDate | date }}</p>
+    <p><strong>Due Date:</strong> {{ task.dueDate | date }}</p>
+  </div>
+  <button class="btn" (click)="goBack()">Back to Tasks</button>
+</div>

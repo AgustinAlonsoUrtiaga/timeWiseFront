@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+    <!-- Sección de tareas -->
+    <div class="tasks-section">
+      <div class="tasks-header">
+        <h2>Active Tasks</h2>
+        <button class="new-task-button">New Task</button>
+      </div>
+    
+      <!-- Solo muestra las tareas si el array tiene elementos -->
+      <div class="tasks-grid" *ngIf="tasks && tasks.length > 0; else noTasks">
+        <!-- Itera sobre el array de tareas -->
+        <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+      </div>
+  
+      <!-- Muestra un mensaje si no hay tareas en el array -->
+      <ng-template #noTasks>
+        <p class="no-tasks-message">No tasks available</p>
+      </ng-template>
+    </div>
+  
+    <!-- Sección de estadísticas -->
+    <div class="statistics-section">
+      <h2>Quick Statistics</h2>
+      <div class="statistics">
+        <div class="stat-card">
+          <h3>Work Time</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%;"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <h3>Completed Tasks</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

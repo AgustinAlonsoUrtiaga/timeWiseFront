@@ -1,0 +1,24 @@
+.navbar {
+    background: linear-gradient(to right, var(--primary-blue), var(--white));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 4rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--bright-blue);
+}
+.navbar-search input {
+    padding: 0.5rem;
+    border: 1px solid var(--bright-blue);
+    border-radius: 4px;
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+.navbar-user .avatar {
+    border-radius: 50%;
+    border: 2px solid var(--bright-blue);
+}

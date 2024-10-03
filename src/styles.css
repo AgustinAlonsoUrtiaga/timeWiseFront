@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/colors.css';
+
+/* Otros estilos globales */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-blue);
+  color: var(--text-dark);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
