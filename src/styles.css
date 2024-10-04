@@ -1,0 +1,13 @@
+@import './styles/colors.css';
+
+/* Otros estilos globales */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-blue);
+  color: var(--text-dark);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

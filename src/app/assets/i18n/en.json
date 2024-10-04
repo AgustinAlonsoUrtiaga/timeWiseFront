@@ -1,0 +1,10 @@
+{
+    "HOME": {
+      "TITLE": "Welcome to TimeWise",
+      "DESCRIPTION": "Manage your time efficiently!",
+      "ACTIVE TASKS": "Active Tasks"
+    },
+    "DASHBOARD": {
+        "ACTIVE-TASKS": "Active Tasks"
+      }
+  }

@@ -1,0 +1,34 @@
+<div class="dashboard-container">
+    <div class="tasks-section">
+      <div class="tasks-header">
+        <h2>Active tasks</h2>
+        <button class="new-task-button" [routerLink]="['/new-task']" >New Task</button>
+      </div>
+    
+      <div class="tasks-grid" *ngIf="filteredTasks && filteredTasks.length > 0; else noTasks">
+        <app-task *ngFor="let task of filteredTasks" [task]="task"></app-task>
+      </div>
+  
+      <ng-template #noTasks>
+        <p class="no-tasks-message">No tasks available</p>
+      </ng-template>
+    </div>
+  
+    <div class="statistics-section">
+      <h2>Quick Statistics</h2>
+      <div class="statistics">
+        <div class="stat-card">
+          <h3>Work Time</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%;"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <h3>Completed Tasks</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

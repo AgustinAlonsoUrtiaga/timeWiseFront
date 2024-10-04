@@ -1,0 +1,102 @@
+<div class="task-detail-card" [ngClass]="{
+  'high-priority': task.priority == 1,
+  'medium-priority': task.priority == 2,
+  'low-priority': task.priority == 3
+}">
+  <h2 *ngIf="!isEditing; else editTitle">{{ task.title }}</h2>
+  <ng-template #editTitle>
+    <input [(ngModel)]="task.title" placeholder="Task Title" class="form-control">
+  </ng-template>
+
+  <!-- Descripción ocupa toda la fila -->
+  <div class="form-row full-row">
+    <strong>Description:</strong>
+    <span *ngIf="!isEditing">{{ task.description }}</span>
+    <textarea *ngIf="isEditing" [(ngModel)]="task.description" rows="3" class="form-control"></textarea>
+  </div>
+
+  <div class="task-info">
+    <div class="form-row">
+      <strong>Status:</strong>
+      <span *ngIf="!isEditing" 
+            [ngClass]="{
+              'status-todo': task.status === 'To Do',
+              'status-progress': task.status === 'In Progress',
+              'status-done': task.status === 'Done'
+            }">{{ task.status }}</span>
+    
+      <select *ngIf="isEditing" [(ngModel)]="task.status" class="form-control status-select" (change)="updateStatusColor($event)">
+        <option value="To Do">To Do</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Done">Done</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <strong>Urgent:</strong>
+      <span *ngIf="!isEditing">{{ task.urgent ? 'Yes' : 'No' }}</span>
+      <input *ngIf="isEditing" type="checkbox" [(ngModel)]="task.urgent" class="form-check-input">
+    </div>
+
+    <div class="form-row">
+      <strong>Time Used:</strong>
+      <span *ngIf="!isEditing">{{ task.timeUsed }} minutes</span>
+      <input *ngIf="isEditing" type="number" [(ngModel)]="task.timeUsed" class="form-control" min="0">
+    </div>
+
+    <div class="progress-container full-row">
+      <p><strong>Time Used:</strong> {{ task.timeUsed }} minutes</p>
+      <p><strong>Estimated Time:</strong> {{ task.estimatedTime }} {{ task.timeUnit }}</p>
+      
+      <!-- Progresión -->
+      <div class="progress-bar-container">
+        <div 
+          class="progress-bar" 
+          [ngStyle]="{ width: calculateProgress() + '%' }"
+          [ngClass]="{ 'exceeded': task.timeUsed > task.estimatedTime }"
+        ></div>
+      </div>
+      
+      <!-- Si el tiempo usado supera el tiempo estimado -->
+      <p *ngIf="task.timeUsed > task.estimatedTime" class="overdue-message">
+        Exceeded by {{ task.timeUsed - task.estimatedTime }} minutes
+      </p>
+    </div>
+
+    <div class="form-row">
+      <strong>Scrum Section:</strong>
+      <span *ngIf="!isEditing">{{ task.scrumSection }}</span>
+      <select *ngIf="isEditing" [(ngModel)]="task.scrumSection" class="form-control">
+        <option *ngFor="let section of scrumSections" [value]="section">{{ section }}</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <strong>Priority:</strong>
+      <span *ngIf="!isEditing">{{  task.priority | priorityLabel }}</span>
+      <select *ngIf="isEditing" [(ngModel)]="task.priority" class="form-control">
+        <option [value]="1">High</option>
+        <option [value]="2">Medium</option>
+        <option [value]="3">Low</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <strong>Created Date:</strong>
+      <span>{{ task.createdDate | date }}</span>
+    </div>
+
+    <div class="form-row">
+      <strong>Due Date:</strong>
+      <span *ngIf="!isEditing">{{ task.dueDate | date }}</span>
+      <input *ngIf="isEditing" type="date" [(ngModel)]="task.dueDate" class="form-control">
+    </div>
+  </div>
+
+  <!-- Botón para guardar solo si está en modo edición -->
+  <div class="form-actions">
+    <button class="btn btn-primary" *ngIf="isEditing" (click)="saveTask()">Save Task</button>
+    <button class="btn btn-secondary" *ngIf="!isEditing" (click)="toggleEdit()">Edit Task</button>
+    <button class="btn btn-outline-secondary" (click)="goBack()">Back to Tasks</button>
+  </div>
+</div>
