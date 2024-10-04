@@ -109,3 +109,25 @@
       padding: 1rem;
     }
   }
+
+  .tasks-header {
+    display: flex;
+    justify-content: space-between; /* Asegura que los elementos estén en extremos opuestos */
+    align-items: center; /* Alinea verticalmente en el centro */
+    margin-bottom: 20px; /* Un poco de margen inferior si es necesario */
+}
+
+.new-task-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.new-task-button:hover {
+    background-color: #0056b3;
+}

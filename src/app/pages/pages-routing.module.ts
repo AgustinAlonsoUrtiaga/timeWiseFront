@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 import { TaskDetailComponent } from '../components/task-detail/task-detail.component';
+import { NewTaskComponent } from '../components/new-task/new-task.component';
+import { TaskListComponent } from '../components/task-list/task-list.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'task-detail/:id', component: TaskDetailComponent },
+      { path: 'new-task', component: NewTaskComponent },
+      { path: 'task-list', component: TaskListComponent },
     ]
   }
 ];

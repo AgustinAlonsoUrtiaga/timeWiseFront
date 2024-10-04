@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent } from 'ngx-countdown';
 import { Task } from '../../components/task/task.component';
 import { TaskService } from '../../services/task.service'; // Importa el servicio
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,25 +11,26 @@ import { TaskService } from '../../services/task.service'; // Importa el servici
 })
 export class DashboardComponent implements OnInit {
   @ViewChild(CountdownComponent) counter!: CountdownComponent;
-  tasks: Task[] = []; // Inicialmente vacío, se llenará con los datos del servicio
+  tasks: Task[] = [];
+  filteredTasks: Task[] = [];
   timerSeconds = 0;
-  workTimePercentage = 75; // Example percentage
-  tasksCompletedPercentage = 50; // Example percentage
+  workTimePercentage = 75;
+  tasksCompletedPercentage = 50;
   activeTask: Task | null = null;
   selectedTask: Task | null = null;
 
-  constructor(private taskService: TaskService) { } // Inyecta el servicio
-
-  ngOnInit(): void {
-    this.loadTasks(); // Cargar las tareas cuando se inicializa el componente
+  constructor(private taskService: TaskService) { 
   }
 
-  // Cargar tareas desde el servicio
+  ngOnInit(): void {
+    this.loadTasks();
+  }
+
   loadTasks(): void {
     this.taskService.getTasks().subscribe(
       (data: Task[]) => {
         this.tasks = data;
-        console.log(this.tasks);
+        this.filteredTasks = this.tasks.filter(task => task.status == 'In Progress');
       },
       (error:any) => {
         console.error('Error al obtener las tareas', error);
@@ -48,11 +50,11 @@ export class DashboardComponent implements OnInit {
 
   convertToMinutes(time: number, unit: string): number {
     if (unit === 'man-days') {
-      return time * 8 * 60; // Convert man-days to minutes
+      return time * 8 * 60;
     } else if (unit === 'hours') {
-      return time * 60; // Convert hours to minutes
+      return time * 60;
     } else {
-      return time; // Assume time is already in minutes
+      return time;
     }
   }
 

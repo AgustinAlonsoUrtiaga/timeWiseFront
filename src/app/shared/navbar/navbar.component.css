@@ -22,3 +22,12 @@
     border-radius: 50%;
     border: 2px solid var(--bright-blue);
 }
+.navbar-link {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Usa el color del texto actual (heredado) */
+    font-weight: bold; /* Opcional: Añadir peso para resaltar el texto */
+  }
+  
+  .navbar-link:hover {
+    text-decoration: none; /* Asegúrate de que tampoco esté subrayado al pasar el mouse */
+  }

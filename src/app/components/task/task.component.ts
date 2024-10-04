@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CountdownConfig, CountdownComponent } from 'ngx-countdown';
+import { ScrumSection } from '../task-detail/task-detail.component';
 
 @Component({
   selector: 'app-task',
@@ -28,11 +29,11 @@ export class TaskComponent {
 
   convertToMinutes(time: number, unit: string): number {
     if (unit === 'man-days') {
-      return time * 8 * 60; // Convertir días-hombre a minutos
+      return time * 8 * 60; 
     } else if (unit === 'hours') {
-      return time * 60; // Convertir horas a minutos
+      return time * 60; 
     } else {
-      return time; // Asumir que el tiempo ya está en minutos
+      return time;
     }
   }
 }
@@ -46,8 +47,8 @@ export interface Task {
   timeUnit: string;
   status: string;
   timeUsed: number;
-  scrumSection: string;
-  priority: string;
+  scrumSection: ScrumSection;
+  priority: number;
   createdDate: Date;
   dueDate: Date;
 }

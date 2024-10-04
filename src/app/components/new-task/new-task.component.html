@@ -1,0 +1,69 @@
+<div class="form-container">
+    <h2>Create New Task</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input id="title" [(ngModel)]="task.title" name="title" class="form-control" placeholder="Enter task title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" [(ngModel)]="task.description" name="description" class="form-control" placeholder="Enter task description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select id="status" [(ngModel)]="task.status" name="status" class="form-control">
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <select [(ngModel)]="task.priority" class="form-control">
+                <option [value]="1">High</option>
+                <option [value]="2">Medium</option>
+                <option [value]="3">Low</option>
+              </select>
+        </div>
+
+        <div class="form-group">
+            <label for="urgent">Urgent:</label>
+            <input id="urgent" type="checkbox" [(ngModel)]="task.urgent" name="urgent" class="form-check-input">
+        </div>
+
+        <div class="form-group">
+            <label for="timeUsed">Time Used (minutes):</label>
+            <input id="timeUsed" type="number" [(ngModel)]="task.timeUsed" name="timeUsed" class="form-control" min="0">
+        </div>
+
+        <div class="form-group">
+            <label for="estimatedTime">Estimated Time:</label>
+            <input id="estimatedTime" type="number" [(ngModel)]="task.estimatedTime" name="estimatedTime" class="form-control" min="1">
+        </div>
+
+        <div class="form-group">
+            <label for="scrumSection">Scrum Section:</label>
+            <select id="scrumSection" [(ngModel)]="task.scrumSection" name="scrumSection" class="form-control">
+                <option *ngFor="let section of scrumSections" [value]="section">{{ section }}</option>
+            </select>
+        </div>
+
+        <div class="form-group date-input-container">
+            <div>
+                <label for="createdDate">Created Date:</label>
+                <input id="createdDate" type="date" [(ngModel)]="task.createdDate" name="createdDate" class="form-control">
+            </div>
+            <div>
+                <label for="dueDate">Due Date:</label>
+                <input id="dueDate" type="date" [(ngModel)]="task.dueDate" name="dueDate" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-primary" type="submit">Create Task</button>
+        </div>
+    </form>
+</div>
